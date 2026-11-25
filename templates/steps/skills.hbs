@@ -1,0 +1,46 @@
+<div>
+    <h2>{{localize "ARSCC.steps.skills"}}</h2>
+    {{#if data.needClass}}<p class="acc-note">{{localize "ARSCC.needClass"}}</p>{{else}}
+    <div class="acc-columns">
+        <section>
+            <h3>{{localize "ARSCC.weaponProfs"}} <span class="acc-count{{#if data.weapon.over}} over{{/if}}">{{data.weapon.used}} / {{data.weapon.total}}</span></h3>
+            <p class="acc-sub">{{localize "ARSCC.penalty"}} {{data.weapon.penalty}}</p>
+            <input type="search" name="f-weapon" data-filter="weapon" value="{{data.filters.weapon}}" placeholder="{{localize 'ARSCC.filter'}}" aria-label="{{localize 'ARSCC.filter'}}">
+            <ul class="acc-list acc-scroll" data-scroll="weapons">
+                {{#each data.weapons}}
+                <li class="{{#if on}}on{{/if}}{{#unless allowed}} barred{{/unless}}">
+                    <button type="button" class="acc-row" data-action="toggleProf" data-name="{{name}}" aria-pressed="{{on}}"><i class="fa-{{#if on}}solid fa-square-check{{else}}regular fa-square{{/if}}" inert></i><span>{{name}}</span>{{#unless allowed}}<em>{{localize "ARSCC.notAllowed"}}</em>{{/unless}}<b>{{cost}}</b></button>
+                    {{#if canSpec}}<button type="button" class="acc-chip{{#if specOn}} selected{{/if}}" data-action="cycleSpec" data-name="{{name}}">{{specLabel}}</button>{{/if}}
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+        {{#if data.hasNwp}}
+        <section>
+            <h3>{{localize "ARSCC.nwp"}} <span class="acc-count{{#if data.nwp.over}} over{{/if}}">{{data.nwp.used}} / {{data.nwp.total}}</span></h3>
+            <p class="acc-sub">{{localize "ARSCC.nwpBonus"}} +{{data.nwp.bonus}}</p>
+            <input type="search" name="f-nwp" data-filter="nwp" value="{{data.filters.nwp}}" placeholder="{{localize 'ARSCC.filter'}}" aria-label="{{localize 'ARSCC.filter'}}">
+            <ul class="acc-list acc-scroll" data-scroll="nwp">
+                {{#each data.nwps}}
+                <li class="{{#if on}}on{{/if}}{{#unless inGroup}} barred{{/unless}}">
+                    <button type="button" class="acc-row" data-action="toggleNwp" data-name="{{name}}" aria-pressed="{{on}}"><i class="fa-{{#if on}}solid fa-square-check{{else}}regular fa-square{{/if}}" inert></i><span>{{name}}</span><em>{{check}}</em><b>{{#if free}}{{localize "ARSCC.free"}}{{else}}{{cost}}{{/if}}</b></button>
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+    </div>
+    {{#if data.thief}}
+    <h3>{{localize "ARSCC.thiefSkills"}} {{#if data.thief.points}}<span class="acc-count{{#if data.thief.over}} over{{/if}}">{{data.thief.points.used}} / {{data.thief.points.total}}</span> <small>{{localize "ARSCC.capPerSkill"}} {{data.thief.points.cap}}</small>{{/if}}</h3>
+    <table class="acc-table">
+        <thead><tr><th class="left">{{localize "ARSCC.skill"}}</th><th>{{localize "ARSCC.base"}}</th><th>{{localize "ARSCC.abilitiesShort.dex"}}</th><th>{{localize "ARSCC.steps.race"}}</th>{{#if data.thief.points}}<th>{{localize "ARSCC.points"}}</th>{{/if}}<th>{{localize "ARSCC.total"}}</th></tr></thead>
+        <tbody>
+            {{#each data.thief.rows}}
+            <tr><td class="left">{{name}}</td><td>{{base}}</td><td>{{dexMod}}</td><td>{{raceMod}}</td>{{#if ../data.thief.points}}<td><input type="number" name="tp-{{name}}" data-bind="thiefPoints.{{name}}" data-type="number" min="0" max="{{../data.thief.points.cap}}" step="5" value="{{points}}" aria-label="{{name}}"></td>{{/if}}<td><b>{{total}}%</b></td></tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <p class="acc-sub">{{localize "ARSCC.thiefNote"}}</p>
+    {{/if}}
+    {{/if}}
+</div>

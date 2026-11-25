@@ -1,0 +1,22 @@
+<aside class="acc-summary">
+    <header>
+        <h3>{{summary.name}}</h3>
+        <p class="acc-sub">{{summary.ruleset}}</p>
+        {{#if summary.line}}<p>{{summary.line}}</p>{{/if}}
+        {{#if summary.alignment}}<p class="acc-sub">{{summary.alignment}}</p>{{/if}}
+    </header>
+    <dl class="acc-scores">
+        {{#each summary.scores}}<div><dt>{{label}}</dt><dd>{{value}}{{extra}}</dd></div>{{/each}}
+    </dl>
+    <dl class="acc-vitals">
+        <div><dt>{{localize "ARSCC.hp"}}</dt><dd>{{summary.hp}}</dd></div>
+        <div><dt>{{localize "ARSCC.thaco"}}</dt><dd>{{summary.thaco}}</dd></div>
+        <div><dt>{{localize "ARSCC.gold"}}</dt><dd>{{summary.gold}}</dd></div>
+    </dl>
+    {{#if summary.saves.length}}
+    <h4>{{localize "ARSCC.summary.saves"}}</h4>
+    <dl class="acc-saves">
+        {{#each summary.saves}}<div><dt>{{label}}</dt><dd>{{value}}</dd></div>{{/each}}
+    </dl>
+    {{/if}}
+</aside>

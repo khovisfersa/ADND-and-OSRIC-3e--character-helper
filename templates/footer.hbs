@@ -1,0 +1,12 @@
+<footer class="acc-footer">
+    <button type="button" class="acc-quiet" data-action="restart"><i class="fa-solid fa-rotate-left" inert></i> {{localize "ARSCC.restart"}}</button>
+    <span class="acc-spacer"></span>
+    <button type="button" data-action="prev" {{#if isFirst}}disabled{{/if}}><i class="fa-solid fa-chevron-left" inert></i> {{localize "ARSCC.prev"}}</button>
+    {{#if isLast}}
+    <button type="button" class="acc-primary" data-action="create" {{#unless canCreate}}disabled{{/unless}}>
+        {{#if busy}}<i class="fa-solid fa-spinner fa-spin" inert></i>{{else}}<i class="fa-solid fa-user-plus" inert></i>{{/if}} {{localize "ARSCC.create"}}
+    </button>
+    {{else}}
+    <button type="button" class="acc-primary" data-action="next">{{localize "ARSCC.next"}} <i class="fa-solid fa-chevron-right" inert></i></button>
+    {{/if}}
+</footer>

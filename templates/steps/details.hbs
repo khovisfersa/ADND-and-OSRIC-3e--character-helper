@@ -1,0 +1,31 @@
+<div>
+    <h2>{{localize "ARSCC.steps.details"}}</h2>
+    {{#if data.needClass}}<p class="acc-note">{{localize "ARSCC.needClass"}}</p>{{else}}
+    <div class="acc-fields">
+        <label class="acc-grow"><span>{{localize "ARSCC.name"}}</span><input type="text" name="name" data-bind="details.name" value="{{state.details.name}}"></label>
+        <label><span>{{localize "ARSCC.sexLabel"}}</span><select name="sex" data-bind="details.sex">{{#each data.sexes}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    </div>
+    <h3>{{localize "ARSCC.alignment"}}</h3>
+    <div class="acc-align">
+        {{#each data.alignments}}<label class="acc-chip{{#if selected}} selected{{/if}}{{#unless ok}} disabled{{/unless}}"><input type="radio" name="alignment" data-bind="details.alignment" value="{{id}}" {{#if selected}}checked{{/if}} {{#unless ok}}disabled{{/unless}}>{{label}}</label>{{/each}}
+    </div>
+    <h3>{{localize "ARSCC.hp"}} <small>{{data.hpMode}}</small></h3>
+    <div class="acc-hp">
+        <div>{{#each data.hpRows}}<p><b>{{label}} {{level}}</b> {{dice}}</p>{{/each}}</div>
+        <b class="acc-big">{{data.hpTotal}}</b>
+        <button type="button" class="acc-primary" data-action="rollHp" {{#unless data.canRollHp}}disabled{{/unless}}><i class="fa-solid fa-dice" inert></i> {{#if data.hpRolled}}{{localize "ARSCC.reroll"}}{{else}}{{localize "ARSCC.roll"}}{{/if}}</button>
+    </div>
+    <h3>{{localize "ARSCC.build"}} <button type="button" class="acc-link" data-action="rollBuild"><i class="fa-solid fa-dice" inert></i> {{localize "ARSCC.suggest"}}</button></h3>
+    <div class="acc-fields">
+        <label><span>{{localize "ARSCC.age"}}</span><input type="text" name="age" data-bind="details.age" value="{{state.details.age}}"></label>
+        <label><span>{{localize "ARSCC.height"}}</span><input type="text" name="height" data-bind="details.height" value="{{state.details.height}}"></label>
+        <label><span>{{localize "ARSCC.weight"}}</span><input type="text" name="weight" data-bind="details.weight" value="{{state.details.weight}}"></label>
+        <label><span>{{localize "ARSCC.deity"}}</span><input type="text" name="deity" data-bind="details.deity" value="{{state.details.deity}}"></label>
+    </div>
+    {{#if data.age}}<p class="acc-sub">{{data.age}}</p>{{/if}}
+    <div class="acc-fields">
+        <label class="acc-grow"><span>{{localize "ARSCC.languages"}} ({{data.raceLanguages}}){{#if data.limitsLanguages}} · {{localize "ARSCC.languageMax"}} {{data.languageLimit}}{{/if}}</span><input type="text" name="languages" data-bind="details.languages" value="{{data.languages}}" placeholder="{{localize 'ARSCC.languagesHint'}}"></label>
+    </div>
+    <label class="acc-block"><span>{{localize "ARSCC.notes"}}</span><textarea name="notes" rows="3" data-bind="details.notes">{{state.details.notes}}</textarea></label>
+    {{/if}}
+</div>

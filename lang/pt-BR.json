@@ -1,0 +1,314 @@
+{
+  "ARSCC": {
+    "title": "Criador de Personagens",
+    "open": "Criar Personagem",
+    "restart": "Recomeçar",
+    "restartConfirm": "Descartar este rascunho e recomeçar?",
+    "prev": "Voltar",
+    "next": "Avançar",
+    "create": "Criar personagem",
+    "choose": "Escolher",
+    "roll": "Rolar",
+    "reroll": "Rolar de novo",
+    "hp": "PV",
+    "thaco": "THAC0",
+    "gold": "Ouro",
+    "gp": "po",
+    "matchesWorld": "Igual à deste mundo",
+    "variantMismatch": "Este mundo usa a variante \"{world}\" do ARS. Um personagem feito com estas regras espera \"{chosen}\": tabelas de atributos, ataques e iniciativa vêm da configuração do mundo.",
+    "osricNote": "Os números seguem o Player Guide do OSRIC 3.0. As descrições de habilidades e magias vêm do compêndio OSRIC, que ainda segue o 2.2.",
+    "noContent": "Nenhum compêndio de itens está visível. O assistente usará as tabelas internas; ative o módulo OSRIC Compendium para ter o conteúdo completo.",
+    "startLevel": "Nível inicial",
+    "hpMethod": "Pontos de vida",
+    "ignoreLimits": "Ignorar restrições de raça e classe",
+    "method": "Método",
+    "autoAssign": "Maiores primeiro",
+    "rollsLeft": "Rolagens restantes",
+    "noRerolls": "Não há mais rolagens.",
+    "noAdjust": "Sem ajuste de atributos",
+    "move": "Movimento",
+    "infravision": "Infravisão",
+    "readMore": "Ler verbete",
+    "needRace": "Escolha uma raça primeiro.",
+    "needClass": "Escolha uma classe primeiro.",
+    "hd": "Dado de vida",
+    "prime": "Principal",
+    "maxLevel": "Nível máx.",
+    "unlimited": "ilimitado",
+    "minimums": "Mínimos",
+    "multiclass": "Multiclasse",
+    "exceptional": "Força excepcional",
+    "name": "Nome",
+    "sexLabel": "Sexo",
+    "alignment": "Alinhamento",
+    "build": "Aparência",
+    "suggest": "Rolar idade, altura e peso",
+    "age": "Idade",
+    "height": "Altura",
+    "weight": "Peso",
+    "deity": "Divindade",
+    "languages": "Idiomas extras",
+    "languagesHint": "Separe com vírgulas",
+    "notes": "Anotações",
+    "weaponProfs": "Perícias com armas",
+    "penalty": "Penalidade sem perícia:",
+    "filter": "Filtrar",
+    "notAllowed": "fora da classe",
+    "nwp": "Perícias comuns",
+    "nwpBonus": "Inclui o bônus de Inteligência:",
+    "free": "grátis",
+    "thiefSkills": "Talentos de ladrão",
+    "capPerSkill": "Máximo por talento:",
+    "skill": "Talento",
+    "base": "Base",
+    "points": "Pontos",
+    "total": "Total",
+    "thiefNote": "O ARS soma os ajustes de Destreza, raça e armadura na hora da rolagem. Os totais não incluem o bônus por estar sem armadura.",
+    "spellChance": "Chance de aprender",
+    "spellMax": "Máximo de magias por nível",
+    "spellRequired": "Obrigatórias",
+    "opposition": "Escolas opostas",
+    "noSpells": "Nenhuma magia arcana foi encontrada nos compêndios visíveis. Adicione magias depois, na ficha.",
+    "spellLevel": "Nível",
+    "allLevels": "Todos os níveis",
+    "startingGold": "Ouro inicial",
+    "left": "Resta:",
+    "category": "Categoria",
+    "onlyAllowed": "Só da minha classe",
+    "cart": "Compras",
+    "cartEmpty": "Nada comprado ainda. Escolha itens na lista.",
+    "viaGm": "Você não pode criar atores, então o mestre receberá um pedido de confirmação.",
+    "playersDisabled": "O mestre não liberou a criação de personagens para jogadores.",
+    "noGm": "Nenhum mestre está conectado para criar o personagem.",
+    "waitingGm": "Aguardando o mestre confirmar o personagem.",
+    "gmDeclined": "O mestre não confirmou o personagem. Seu rascunho continua salvo.",
+    "gmConfirm": "{user} terminou o personagem \"{name}\". Criar?",
+    "missingItems": "Alguns itens não foram encontrados e ficaram de fora: {list}",
+    "createFailed": "Não foi possível criar o personagem: {error}",
+    "steps": {
+      "rules": "Regras",
+      "abilities": "Atributos",
+      "race": "Raça",
+      "class": "Classe",
+      "details": "Detalhes",
+      "skills": "Perícias",
+      "spells": "Grimório",
+      "equipment": "Equipamento",
+      "review": "Revisão"
+    },
+    "summary": {
+      "unnamed": "Personagem sem nome",
+      "saves": "Jogadas de proteção"
+    },
+    "rulesets": {
+      "osric3": "OSRIC 3.0",
+      "add1e": "1ª edição",
+      "add2e": "2ª edição"
+    },
+    "rulesetHints": {
+      "osric3": "Retroclone da primeira edição, 10 classes.",
+      "add1e": "Classes e raças do livro básico.",
+      "add2e": "Sacerdotes, especialistas, bardos e perícias comuns."
+    },
+    "variants": {
+      "0": "OSRIC",
+      "1": "1",
+      "2": "2"
+    },
+    "hpModes": {
+      "maxFirst": "Máximo no 1º nível, depois rolar",
+      "roll": "Rolar todos os níveis",
+      "average": "Média, arredondada para cima",
+      "max": "Máximo em todos os níveis"
+    },
+    "abilities": {
+      "str": "Força",
+      "int": "Inteligência",
+      "wis": "Sabedoria",
+      "dex": "Destreza",
+      "con": "Constituição",
+      "cha": "Carisma"
+    },
+    "abilitiesShort": {
+      "str": "For",
+      "int": "Int",
+      "wis": "Sab",
+      "dex": "Des",
+      "con": "Con",
+      "cha": "Car"
+    },
+    "fx": {
+      "hit": "Ataque",
+      "dmg": "Dano",
+      "missile": "À distância",
+      "ac": "CA",
+      "hp": "PV por dado",
+      "languages": "Idiomas",
+      "magic": "Proteção mental",
+      "henchmen": "Seguidores"
+    },
+    "saves": {
+      "death": "Paralisia, veneno, morte",
+      "petrification": "Petrificação, metamorfose",
+      "wand": "Bastão, cajado, varinha",
+      "breath": "Sopro",
+      "spell": "Magias"
+    },
+    "sex": {
+      "male": "Masculino",
+      "female": "Feminino",
+      "other": "Outro"
+    },
+    "spec": {
+      "0": "Especializar",
+      "1": "Especializado",
+      "2": "Dupla especialização"
+    },
+    "shop": {
+      "weapon": "Armas",
+      "armor": "Armaduras e escudos",
+      "gear": "Equipamento geral"
+    },
+    "races": {
+      "human": "Humano",
+      "dwarf": "Anão",
+      "elf": "Elfo",
+      "gnome": "Gnomo",
+      "half-elf": "Meio-elfo",
+      "halfling": "Halfling",
+      "half-orc": "Meio-orc"
+    },
+    "classes": {
+      "cleric": "Clérigo",
+      "druid": "Druida",
+      "fighter": "Guerreiro",
+      "paladin": "Paladino",
+      "ranger": "Ranger",
+      "magic-user": "Usuário de magia",
+      "illusionist": "Ilusionista",
+      "thief": "Ladrão",
+      "assassin": "Assassino",
+      "monk": "Monge",
+      "mage": "Mago",
+      "abjurer": "Abjurador",
+      "conjurer": "Conjurador",
+      "diviner": "Adivinho",
+      "enchanter": "Encantador",
+      "invoker": "Invocador",
+      "necromancer": "Necromante",
+      "transmuter": "Transmutador",
+      "bard": "Bardo"
+    },
+    "methods": {
+      "3d6order": "3d6 em ordem",
+      "3d6twice": "3d6 duas vezes, fica o melhor, em ordem",
+      "3d6x6each": "3d6 seis vezes por atributo, fica o melhor",
+      "3d6arrange": "3d6, distribuir",
+      "3d6twiceArrange": "3d6 duas vezes, fica o melhor, distribuir",
+      "4d6drop": "4d6 descarta o menor, distribuir",
+      "3d6x12": "3d6 doze vezes, ficam seis, distribuir",
+      "3d6x12sets": "Doze conjuntos de 3d6, escolher um",
+      "dicepool": "8 em cada mais sete dados",
+      "manual": "Digitar valores",
+      "4d6order": "4d6 descarta o menor, em ordem"
+    },
+    "methodHints": {
+      "3d6order": "Role 3d6 para cada atributo, em ordem.",
+      "3d6twice": "Role 3d6 duas vezes para cada atributo e fique com o maior.",
+      "3d6x6each": "Role 3d6 seis vezes para cada atributo e fique com o maior.",
+      "3d6arrange": "Role 3d6 seis vezes e distribua os resultados.",
+      "3d6twiceArrange": "Role 3d6 duas vezes, seis vezes; fique com o maior de cada par e distribua.",
+      "4d6drop": "Role 4d6 seis vezes, descarte o menor dado e distribua os resultados.",
+      "3d6x12": "Role 3d6 doze vezes, fique com os seis melhores e distribua.",
+      "3d6x12sets": "Role doze personagens completos e escolha um.",
+      "dicepool": "Todo atributo começa em 8. Some dados inteiros aos atributos; nenhum pode passar de 18.",
+      "manual": "Digite os valores antes do ajuste racial (3 a 18).",
+      "4d6order": "Role 4d6 para cada atributo, em ordem, e descarte o menor dado."
+    },
+    "reasons": {
+      "raceMin": "{ability} {score}, exige {value}",
+      "raceMax": "{ability} {score}, limite {value}",
+      "classMin": "{cls} {ability} {score}, exige {value}",
+      "classRace": "{cls} Não disponível para: {race}",
+      "alignmentClash": "Nenhum alinhamento em comum",
+      "npcOnly": "As tabelas listam esta combinação só para PdMs; fale com o mestre.",
+      "xpPenalty": "Abaixo dos mínimos: {value}% menos XP"
+    },
+    "issues": {
+      "abilitiesIncomplete": "Role ou distribua os seis atributos.",
+      "abilitiesRange": "Os valores devem ficar entre 3 e 18.",
+      "dicePending": "Distribua os sete dados.",
+      "raceMissing": "Escolha uma raça.",
+      "raceNotAllowed": "Os valores não permitem esta raça.",
+      "classMissing": "Escolha uma classe.",
+      "classNotAllowed": "{cls} não está disponível para este personagem.",
+      "comboNotAllowed": "Esta combinação de classes não é permitida.",
+      "strPercent": "Role a força excepcional.",
+      "npcOnly": "As tabelas listam esta raça e classe só para PdMs.",
+      "nameMissing": "Dê um nome ao personagem.",
+      "alignmentMissing": "Escolha um alinhamento permitido pelas classes.",
+      "hpMissing": "Role os pontos de vida.",
+      "levelCapped": "{cls} está limitado ao nível {value}.",
+      "weaponOver": "Perícias com armas demais.",
+      "weaponUnder": "{value} vaga(s) de perícia com armas sem usar.",
+      "nwpOver": "Perícias comuns demais.",
+      "nwpUnder": "{value} vaga(s) de perícia comum sem usar.",
+      "thiefOver": "Pontos de ladrão demais.",
+      "thiefUnder": "{value} pontos de ladrão sem usar.",
+      "thiefCap": "Nenhum talento pode receber mais de {value} pontos.",
+      "thief95": "Pontos não podem elevar um talento acima de 95%.",
+      "spellsUnder": "Sugestão: mais {value} magia(s) no grimório.",
+      "spellsOver": "Mais que as {value} magias normalmente concedidas.",
+      "spellsRequired": "Normalmente incluídas: {value}.",
+      "spellsMax": "A Inteligência permite no máximo {value} magias por nível.",
+      "goldMissing": "Role o ouro inicial.",
+      "goldOver": "As compras custam mais que o ouro disponível.",
+      "ageMissing": "Informe a idade: ela ajusta os atributos.",
+      "languagesOver": "No máximo {value} idioma(s) extra(s).",
+      "xpPenalty": "{cls}: abaixo dos mínimos, {value}% menos XP."
+    },
+    "settings": {
+      "allowPlayers": {
+        "name": "Jogadores podem usar o criador",
+        "hint": "Mostra o botão aos jogadores. Sem permissão para criar atores, eles pedem confirmação ao mestre."
+      },
+      "lockRuleset": {
+        "name": "Travar regras na variante do mundo",
+        "hint": "Permite só as regras iguais à variante configurada no ARS."
+      },
+      "allowManual": {
+        "name": "Jogadores podem digitar valores",
+        "hint": "Permite digitar atributos, força excepcional e ouro em vez de rolar."
+      },
+      "allowIgnoreLimits": {
+        "name": "Jogadores podem ignorar restrições",
+        "hint": "O mestre sempre pode."
+      },
+      "maxRerolls": {
+        "name": "Limite de rolagens de atributos",
+        "hint": "Quantas vezes os atributos podem ser rolados por personagem. 0 é ilimitado; qualquer outro valor também limita PV, ouro e força excepcional a uma rolagem para jogadores."
+      },
+      "maxStartLevel": {
+        "name": "Maior nível inicial",
+        "hint": ""
+      },
+      "postRolls": {
+        "name": "Enviar rolagens ao chat",
+        "hint": "Mostra no chat as rolagens da criação."
+      },
+      "sourcePacks": {
+        "name": "Compêndios usados",
+        "hint": "Ids separados por vírgula, como osric-compendium.items, em ordem de prioridade. Vazio usa todos os compêndios de itens visíveis."
+      }
+    },
+    "allowShortfall": "Permitir mínimos de classe não atingidos (-10/-15/-20% de XP)",
+    "languageMax": "até",
+    "ageCategories": {
+      "youth": "Jovem",
+      "adult": "Adulto",
+      "grizzled": "Grisalho",
+      "elder": "Idoso",
+      "ancient": "Ancião"
+    }
+  }
+}

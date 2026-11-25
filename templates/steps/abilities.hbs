@@ -1,0 +1,34 @@
+<div>
+    <h2>{{localize "ARSCC.steps.abilities"}}</h2>
+    <div class="acc-fields">
+        <label class="acc-grow"><span>{{localize "ARSCC.method"}}</span><select name="method" data-bind="abilities.method">{{#each data.methods}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        {{#unless data.isManual}}<button type="button" class="acc-primary" data-action="rollAbilities" {{#unless data.canRoll}}disabled{{/unless}}><i class="fa-solid fa-dice" inert></i> {{data.rollLabel}}</button>{{/unless}}
+        {{#if data.isPool}}<button type="button" data-action="autoAssign">{{localize "ARSCC.autoAssign"}}</button>{{/if}}
+    </div>
+    <p class="acc-sub">{{data.hint}}{{#if data.limited}} {{localize "ARSCC.rollsLeft"}}: {{data.rollsLeft}}.{{/if}}</p>
+    {{#if data.isPool}}<div class="acc-pool">{{#each data.pool}}<span class="{{#if used}}used{{/if}}">{{v}}</span>{{/each}}</div>{{/if}}
+    {{#if data.isDice}}
+    <div class="acc-dice">
+        {{#each data.dice}}
+        <label><b>{{v}}</b><select name="dice{{i}}" data-bind="diceTo.{{i}}"><option value=""></option>{{#each options}}<option value="{{k}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        {{/each}}
+    </div>
+    {{/if}}
+    {{#if data.isSets}}
+    <table class="acc-table">
+        <thead><tr><th>#</th>{{#each data.headers}}<th>{{this}}</th>{{/each}}<th>Σ</th><th></th></tr></thead>
+        <tbody>{{#each data.sets}}<tr class="{{#if selected}}selected{{/if}}"><td>{{n}}</td>{{#each values}}<td>{{this}}</td>{{/each}}<td>{{total}}</td><td><button type="button" data-action="pickSet" data-index="{{i}}">{{localize "ARSCC.choose"}}</button></td></tr>{{/each}}</tbody>
+    </table>
+    {{/if}}
+    <div class="acc-abilities">
+        {{#each data.rows}}
+        <div class="acc-ability">
+            <span class="acc-ability-name">{{label}}</span>
+            {{#if ../data.isManual}}<input type="number" name="manual-{{key}}" data-bind="abilities.manual.{{key}}" data-type="number" min="3" max="18" value="{{manual}}" aria-label="{{label}}">
+            {{else if ../data.isPool}}<select name="assign-{{key}}" data-bind="assign.{{key}}" data-type="number" aria-label="{{label}}"><option value="">—</option>{{#each options}}<option value="{{i}}" {{#if selected}}selected{{/if}}>{{v}}{{#if taken}} ↔{{/if}}</option>{{/each}}</select>
+            {{else}}<b class="acc-score">{{#if value}}{{value}}{{else}}—{{/if}}</b>{{/if}}
+            <span class="acc-fx">{{#each effects}}<span>{{this}}</span>{{/each}}</span>
+        </div>
+        {{/each}}
+    </div>
+</div>

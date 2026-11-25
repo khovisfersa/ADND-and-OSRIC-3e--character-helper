@@ -1,0 +1,16 @@
+<div>
+    <h2>{{localize "ARSCC.steps.race"}}</h2>
+    <div class="acc-cards acc-cards-2">
+        {{#each data.races}}
+        <div class="acc-card{{#if selected}} selected{{/if}}{{#unless ok}} disabled{{/unless}}">
+            <button type="button" class="acc-card-main" data-action="pickRace" data-key="{{key}}" {{#unless ok}}disabled{{/unless}}>
+                <strong>{{label}}</strong>
+                <span>{{adj}} · {{localize "ARSCC.move"}} {{move}}{{#if infravision}} · {{localize "ARSCC.infravision"}} {{infravision}}{{/if}}</span>
+                <span class="acc-sub">{{classes}}</span>
+            </button>
+            {{#each reasons}}<span class="acc-reason">{{this}}</span>{{/each}}
+            {{#if uuid}}<button type="button" class="acc-link" data-action="preview" data-uuid="{{uuid}}"><i class="fa-solid fa-book" inert></i> {{localize "ARSCC.readMore"}}</button>{{/if}}
+        </div>
+        {{/each}}
+    </div>
+</div>

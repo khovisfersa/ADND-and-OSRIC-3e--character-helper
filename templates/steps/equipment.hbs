@@ -1,0 +1,40 @@
+<div>
+    <h2>{{localize "ARSCC.steps.equipment"}}</h2>
+    {{#if data.needClass}}<p class="acc-note">{{localize "ARSCC.needClass"}}</p>{{else}}
+    <div class="acc-fields">
+        <button type="button" class="acc-primary" data-action="rollGold" {{#unless data.canRollGold}}disabled{{/unless}}><i class="fa-solid fa-dice" inert></i> {{data.formula}}</button>
+        {{#if data.canEdit}}<label><span>{{localize "ARSCC.startingGold"}}</span><input type="number" name="gold" data-bind="gold" data-type="number" min="0" value="{{data.gold}}"></label>{{else if data.rolled}}<span><b>{{data.gold}}</b> {{localize "ARSCC.gp"}}</span>{{/if}}
+        <span class="acc-spacer"></span>
+        <span class="acc-count{{#if data.over}} over{{/if}}">{{localize "ARSCC.left"}} {{data.left}} {{localize "ARSCC.gp"}}</span>
+    </div>
+    <div class="acc-columns acc-shop">
+        <section>
+            <div class="acc-fields">
+                <label><select name="f-shopCategory" data-filter="shopCategory" aria-label="{{localize 'ARSCC.category'}}">{{#each data.categories}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+                <input type="search" class="acc-grow" name="f-shop" data-filter="shop" value="{{data.filters.shop}}" placeholder="{{localize 'ARSCC.filter'}}" aria-label="{{localize 'ARSCC.filter'}}">
+                <label class="acc-check"><input type="checkbox" name="f-onlyAllowed" data-filter="onlyAllowed" {{#if data.filters.onlyAllowed}}checked{{/if}}><span>{{localize "ARSCC.onlyAllowed"}}</span></label>
+            </div>
+            <ul class="acc-list acc-scroll" data-scroll="shop">
+                {{#each data.rows}}
+                <li class="{{#unless allowed}}barred{{/unless}}">
+                    <button type="button" class="acc-row" data-action="buy" data-id="{{id}}"><i class="fa-solid fa-plus" inert></i><span>{{name}}</span><em>{{info}}</em><b class="{{#unless afford}}over{{/unless}}">{{price}} {{localize "ARSCC.gp"}}</b></button>
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+        <section>
+            <h3>{{localize "ARSCC.cart"}} <small>{{data.weight}} lb</small></h3>
+            <ul class="acc-list acc-cart-lines">
+                {{#each data.cart}}
+                <li>
+                    <span class="acc-row"><span>{{name}}</span><b>{{total}}</b></span>
+                    <button type="button" class="acc-icon" data-action="qty" data-index="{{i}}" data-delta="-1" aria-label="-1 {{name}}"><i class="fa-solid fa-minus" inert></i></button>
+                    <b class="acc-qty">{{qty}}</b>
+                    <button type="button" class="acc-icon" data-action="qty" data-index="{{i}}" data-delta="1" aria-label="+1 {{name}}"><i class="fa-solid fa-plus" inert></i></button>
+                </li>
+                {{else}}<li class="acc-sub">{{localize "ARSCC.cartEmpty"}}</li>{{/each}}
+            </ul>
+        </section>
+    </div>
+    {{/if}}
+</div>

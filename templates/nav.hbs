@@ -1,0 +1,14 @@
+<nav class="acc-nav" aria-label="{{localize 'ARSCC.title'}}">
+    <ol>
+        {{#each steps}}
+        <li>
+            <button type="button" class="acc-step {{status}}{{#if active}} active{{/if}}" data-action="goto" data-step="{{id}}" {{#if active}}aria-current="step"{{/if}}>
+                <i class="fa-solid {{icon}}" inert></i>
+                <span>{{label}}</span>
+                {{#if (eq status "done")}}<i class="fa-solid fa-check acc-mark" inert></i>{{/if}}
+                {{#if (eq status "error")}}<i class="fa-solid fa-circle-exclamation acc-mark" inert></i>{{/if}}
+            </button>
+        </li>
+        {{/each}}
+    </ol>
+</nav>

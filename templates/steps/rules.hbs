@@ -1,0 +1,22 @@
+<div>
+    <h2>{{localize "ARSCC.steps.rules"}}</h2>
+    <div class="acc-cards acc-cards-3">
+        {{#each data.rulesets}}
+        <label class="acc-card{{#if selected}} selected{{/if}}{{#if locked}} disabled{{/if}}">
+            <input type="radio" name="ruleset" data-bind="ruleset" value="{{id}}" {{#if selected}}checked{{/if}} {{#if locked}}disabled{{/if}}>
+            <strong>{{label}}</strong>
+            <span>{{hint}}</span>
+            {{#if matches}}<em class="acc-tag">{{localize "ARSCC.matchesWorld"}}</em>{{/if}}
+        </label>
+        {{/each}}
+    </div>
+    {{#if data.mismatch}}<p class="acc-note warn"><i class="fa-solid fa-triangle-exclamation" inert></i> {{data.mismatch}}</p>{{/if}}
+    {{#if data.osricNote}}<p class="acc-note"><i class="fa-solid fa-circle-info" inert></i> {{localize "ARSCC.osricNote"}}</p>{{/if}}
+    {{#if data.noContent}}<p class="acc-note warn"><i class="fa-solid fa-box-open" inert></i> {{localize "ARSCC.noContent"}}</p>{{/if}}
+    <div class="acc-fields">
+        <label><span>{{localize "ARSCC.startLevel"}}</span><input type="number" name="startLevel" data-bind="startLevel" data-type="number" min="1" max="{{data.maxLevel}}" value="{{state.startLevel}}"></label>
+        <label><span>{{localize "ARSCC.hpMethod"}}</span><select name="hpMode" data-bind="hpMode">{{#each data.hpModes}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        {{#if data.canShortfall}}<label class="acc-check"><input type="checkbox" name="allowShortfall" data-bind="allowShortfall" {{#if state.allowShortfall}}checked{{/if}}><span>{{localize "ARSCC.allowShortfall"}}</span></label>{{/if}}
+        {{#if data.canIgnore}}<label class="acc-check"><input type="checkbox" name="ignoreLimits" data-bind="ignoreLimits" {{#if state.ignoreLimits}}checked{{/if}}><span>{{localize "ARSCC.ignoreLimits"}}</span></label>{{/if}}
+    </div>
+</div>

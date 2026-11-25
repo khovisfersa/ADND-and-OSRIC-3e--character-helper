@@ -1,0 +1,17 @@
+<div>
+    <h2>{{localize "ARSCC.steps.review"}}</h2>
+    {{#if data.issues.length}}
+    <ul class="acc-issues">{{#each data.issues}}<li class="{{level}}"><i class="fa-solid {{#if (eq level 'error')}}fa-circle-exclamation{{else}}fa-circle-info{{/if}}" inert></i> <button type="button" class="acc-link" data-action="goto" data-step="{{step}}">{{stepLabel}}</button> {{text}}</li>{{/each}}</ul>
+    {{/if}}
+    {{#unless data.incomplete}}
+    <dl class="acc-review">
+        <div><dt>XP</dt><dd>{{data.xp}}</dd></div>
+        <div><dt>{{localize "ARSCC.weaponProfs"}}</dt><dd>{{data.profs}}</dd></div>
+        {{#if data.nwps}}<div><dt>{{localize "ARSCC.nwp"}}</dt><dd>{{data.nwps}}</dd></div>{{/if}}
+        {{#if data.thief}}<div><dt>{{localize "ARSCC.thiefSkills"}}</dt><dd>{{data.thief}}</dd></div>{{/if}}
+        {{#if data.spells}}<div><dt>{{localize "ARSCC.steps.spells"}}</dt><dd>{{data.spells}}</dd></div>{{/if}}
+        <div><dt>{{localize "ARSCC.steps.equipment"}}</dt><dd>{{data.cart}}</dd></div>
+    </dl>
+    {{#if data.viaGm}}<p class="acc-note"><i class="fa-solid fa-circle-info" inert></i> {{localize "ARSCC.viaGm"}}</p>{{/if}}
+    {{/unless}}
+</div>

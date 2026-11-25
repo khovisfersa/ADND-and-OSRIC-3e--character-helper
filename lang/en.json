@@ -1,0 +1,314 @@
+{
+  "ARSCC": {
+    "title": "Character Creator",
+    "open": "Create Character",
+    "restart": "Start over",
+    "restartConfirm": "Discard this draft and start over?",
+    "prev": "Back",
+    "next": "Next",
+    "create": "Create character",
+    "choose": "Choose",
+    "roll": "Roll",
+    "reroll": "Reroll",
+    "hp": "HP",
+    "thaco": "THAC0",
+    "gold": "Gold",
+    "gp": "gp",
+    "matchesWorld": "Matches this world",
+    "variantMismatch": "This world uses the ARS variant \"{world}\". A character made with these rules expects \"{chosen}\": ability tables, attacks and initiative come from the world setting.",
+    "osricNote": "Numbers follow the OSRIC 3.0 Player Guide. Ability and spell descriptions come from the OSRIC compendium, which still follows 2.2.",
+    "noContent": "No Item compendium is visible. The wizard will use its built-in tables; enable the OSRIC Compendium module for full content.",
+    "startLevel": "Starting level",
+    "hpMethod": "Hit points",
+    "ignoreLimits": "Ignore race and class restrictions",
+    "method": "Method",
+    "autoAssign": "Highest first",
+    "rollsLeft": "Rolls left",
+    "noRerolls": "No rerolls left.",
+    "noAdjust": "No ability adjustment",
+    "move": "Move",
+    "infravision": "Infravision",
+    "readMore": "Read entry",
+    "needRace": "Choose a race first.",
+    "needClass": "Choose a class first.",
+    "hd": "Hit die",
+    "prime": "Prime",
+    "maxLevel": "Max level",
+    "unlimited": "unlimited",
+    "minimums": "Minimums",
+    "multiclass": "Multi-class",
+    "exceptional": "Exceptional strength",
+    "name": "Name",
+    "sexLabel": "Sex",
+    "alignment": "Alignment",
+    "build": "Appearance",
+    "suggest": "Roll age, height and weight",
+    "age": "Age",
+    "height": "Height",
+    "weight": "Weight",
+    "deity": "Deity",
+    "languages": "Extra languages",
+    "languagesHint": "Separate with commas",
+    "notes": "Notes",
+    "weaponProfs": "Weapon proficiencies",
+    "penalty": "Non-proficiency penalty:",
+    "filter": "Filter",
+    "notAllowed": "not for this class",
+    "nwp": "Nonweapon proficiencies",
+    "nwpBonus": "Includes the Intelligence bonus:",
+    "free": "free",
+    "thiefSkills": "Thief skills",
+    "capPerSkill": "Max per skill:",
+    "skill": "Skill",
+    "base": "Base",
+    "points": "Points",
+    "total": "Total",
+    "thiefNote": "ARS adds Dexterity, race and armor adjustments when the skill is rolled. Totals are for no armor bonus.",
+    "spellChance": "Chance to learn",
+    "spellMax": "Most spells per level",
+    "spellRequired": "Required",
+    "opposition": "Opposition schools",
+    "noSpells": "No arcane spell was found in the visible compendiums. Add spells on the character sheet later.",
+    "spellLevel": "Level",
+    "allLevels": "All levels",
+    "startingGold": "Starting gold",
+    "left": "Left:",
+    "category": "Category",
+    "onlyAllowed": "Only for my class",
+    "cart": "Purchases",
+    "cartEmpty": "Nothing bought yet. Choose items from the list.",
+    "viaGm": "You cannot create actors, so the GM will be asked to confirm.",
+    "playersDisabled": "The GM has not opened character creation to players.",
+    "noGm": "No GM is connected to create the character.",
+    "waitingGm": "Waiting for the GM to confirm the character.",
+    "gmDeclined": "The GM did not confirm the character. Your draft is still saved.",
+    "gmConfirm": "{user} finished the character \"{name}\". Create it?",
+    "missingItems": "Some items could not be found and were left out: {list}",
+    "createFailed": "The character could not be created: {error}",
+    "steps": {
+      "rules": "Rules",
+      "abilities": "Abilities",
+      "race": "Race",
+      "class": "Class",
+      "details": "Details",
+      "skills": "Proficiencies",
+      "spells": "Spellbook",
+      "equipment": "Equipment",
+      "review": "Review"
+    },
+    "summary": {
+      "unnamed": "Unnamed character",
+      "saves": "Saving throws"
+    },
+    "rulesets": {
+      "osric3": "OSRIC 3.0",
+      "add1e": "1st edition",
+      "add2e": "2nd edition"
+    },
+    "rulesetHints": {
+      "osric3": "First-edition retro-clone, 10 classes.",
+      "add1e": "Core handbook classes and races.",
+      "add2e": "Priests, specialists, bards and nonweapon proficiencies."
+    },
+    "variants": {
+      "0": "OSRIC",
+      "1": "1",
+      "2": "2"
+    },
+    "hpModes": {
+      "maxFirst": "Maximum at 1st level, then roll",
+      "roll": "Roll every level",
+      "average": "Average, rounded up",
+      "max": "Maximum every level"
+    },
+    "abilities": {
+      "str": "Strength",
+      "int": "Intelligence",
+      "wis": "Wisdom",
+      "dex": "Dexterity",
+      "con": "Constitution",
+      "cha": "Charisma"
+    },
+    "abilitiesShort": {
+      "str": "Str",
+      "int": "Int",
+      "wis": "Wis",
+      "dex": "Dex",
+      "con": "Con",
+      "cha": "Cha"
+    },
+    "fx": {
+      "hit": "Hit",
+      "dmg": "Damage",
+      "missile": "Missile",
+      "ac": "AC",
+      "hp": "HP per die",
+      "languages": "Languages",
+      "magic": "Mental saves",
+      "henchmen": "Henchmen"
+    },
+    "saves": {
+      "death": "Paralysis, poison, death",
+      "petrification": "Petrification, polymorph",
+      "wand": "Rod, staff, wand",
+      "breath": "Breath weapon",
+      "spell": "Spells"
+    },
+    "sex": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other"
+    },
+    "spec": {
+      "0": "Specialize",
+      "1": "Specialized",
+      "2": "Double specialized"
+    },
+    "shop": {
+      "weapon": "Weapons",
+      "armor": "Armor and shields",
+      "gear": "Gear"
+    },
+    "races": {
+      "human": "Human",
+      "dwarf": "Dwarf",
+      "elf": "Elf",
+      "gnome": "Gnome",
+      "half-elf": "Half-elf",
+      "halfling": "Halfling",
+      "half-orc": "Half-orc"
+    },
+    "classes": {
+      "cleric": "Cleric",
+      "druid": "Druid",
+      "fighter": "Fighter",
+      "paladin": "Paladin",
+      "ranger": "Ranger",
+      "magic-user": "Magic-user",
+      "illusionist": "Illusionist",
+      "thief": "Thief",
+      "assassin": "Assassin",
+      "monk": "Monk",
+      "mage": "Mage",
+      "abjurer": "Abjurer",
+      "conjurer": "Conjurer",
+      "diviner": "Diviner",
+      "enchanter": "Enchanter",
+      "invoker": "Invoker",
+      "necromancer": "Necromancer",
+      "transmuter": "Transmuter",
+      "bard": "Bard"
+    },
+    "methods": {
+      "3d6order": "3d6 in order",
+      "3d6twice": "3d6 twice, keep the best, in order",
+      "3d6x6each": "3d6 six times per ability, keep the best",
+      "3d6arrange": "3d6, arrange",
+      "3d6twiceArrange": "3d6 twice, keep the best, arrange",
+      "4d6drop": "4d6 drop lowest, arrange",
+      "3d6x12": "3d6 twelve times, keep six, arrange",
+      "3d6x12sets": "Twelve sets of 3d6, choose one",
+      "dicepool": "8 each plus seven dice",
+      "manual": "Enter scores",
+      "4d6order": "4d6 drop lowest, in order"
+    },
+    "methodHints": {
+      "3d6order": "Roll 3d6 for each ability in order.",
+      "3d6twice": "Roll 3d6 twice for each ability and keep the higher.",
+      "3d6x6each": "Roll 3d6 six times for each ability and keep the highest.",
+      "3d6arrange": "Roll 3d6 six times and assign the results.",
+      "3d6twiceArrange": "Roll 3d6 twice, six times over; keep the higher of each pair and assign.",
+      "4d6drop": "Roll 4d6 six times, drop the lowest die, and assign the results.",
+      "3d6x12": "Roll 3d6 twelve times, keep the six best and assign.",
+      "3d6x12sets": "Roll twelve complete characters and choose one.",
+      "dicepool": "Every ability starts at 8. Add whole dice to abilities; none may pass 18.",
+      "manual": "Type the scores before racial adjustment (3 to 18).",
+      "4d6order": "Roll 4d6 for each ability in order and drop the lowest die."
+    },
+    "reasons": {
+      "raceMin": "{ability} {score}, needs {value}",
+      "raceMax": "{ability} {score}, limit {value}",
+      "classMin": "{cls} {ability} {score}, needs {value}",
+      "classRace": "{cls} Not open to: {race}",
+      "alignmentClash": "No alignment in common",
+      "npcOnly": "The tables list this pairing for NPCs only; ask your GM.",
+      "xpPenalty": "Below the minimums: {value}% less XP"
+    },
+    "issues": {
+      "abilitiesIncomplete": "Roll or assign all six abilities.",
+      "abilitiesRange": "Scores must be between 3 and 18.",
+      "dicePending": "Place all seven dice.",
+      "raceMissing": "Choose a race.",
+      "raceNotAllowed": "The scores do not qualify for this race.",
+      "classMissing": "Choose a class.",
+      "classNotAllowed": "{cls} is not available to this character.",
+      "comboNotAllowed": "This class combination is not allowed.",
+      "strPercent": "Roll exceptional strength.",
+      "npcOnly": "The tables list this race and class for NPCs only.",
+      "nameMissing": "Name the character.",
+      "alignmentMissing": "Choose an alignment the classes allow.",
+      "hpMissing": "Roll hit points.",
+      "levelCapped": "{cls} is limited to level {value}.",
+      "weaponOver": "Too many weapon proficiencies.",
+      "weaponUnder": "{value} weapon proficiency slot(s) unspent.",
+      "nwpOver": "Too many nonweapon proficiencies.",
+      "nwpUnder": "{value} nonweapon slot(s) unspent.",
+      "thiefOver": "Too many thief points spent.",
+      "thiefUnder": "{value} thief points unspent.",
+      "thiefCap": "No skill may receive more than {value} points.",
+      "thief95": "Points cannot raise a skill above 95%.",
+      "spellsUnder": "{value} more spell(s) suggested for the spellbook.",
+      "spellsOver": "More than the {value} spells usually granted.",
+      "spellsRequired": "Usually included: {value}.",
+      "spellsMax": "Intelligence allows at most {value} spells per level.",
+      "goldMissing": "Roll starting gold.",
+      "goldOver": "Purchases cost more than the gold available.",
+      "ageMissing": "Set the age: it adjusts ability scores.",
+      "languagesOver": "At most {value} extra language(s).",
+      "xpPenalty": "{cls}: below the minimums, {value}% less XP."
+    },
+    "settings": {
+      "allowPlayers": {
+        "name": "Players can use the creator",
+        "hint": "Show the button to players. Without permission to create actors, they ask the GM to confirm."
+      },
+      "lockRuleset": {
+        "name": "Lock rules to the world variant",
+        "hint": "Only allow the rules that match the ARS system variant."
+      },
+      "allowManual": {
+        "name": "Players can type values",
+        "hint": "Let players enter ability scores, exceptional strength and gold instead of rolling."
+      },
+      "allowIgnoreLimits": {
+        "name": "Players can ignore restrictions",
+        "hint": "GMs always can."
+      },
+      "maxRerolls": {
+        "name": "Ability roll limit",
+        "hint": "How many times abilities can be rolled per character. 0 is unlimited; any other value also limits hit points, gold and exceptional strength to one roll for players."
+      },
+      "maxStartLevel": {
+        "name": "Highest starting level",
+        "hint": ""
+      },
+      "postRolls": {
+        "name": "Post rolls to chat",
+        "hint": "Show creation rolls in chat."
+      },
+      "sourcePacks": {
+        "name": "Compendiums to use",
+        "hint": "Comma-separated ids such as osric-compendium.items, in order of priority. Empty uses every visible Item compendium."
+      }
+    },
+    "allowShortfall": "Allow missed class minimums (-10/-15/-20% XP)",
+    "languageMax": "up to",
+    "ageCategories": {
+      "youth": "Youth",
+      "adult": "Adult",
+      "grizzled": "Grizzled",
+      "elder": "Elder",
+      "ancient": "Ancient"
+    }
+  }
+}

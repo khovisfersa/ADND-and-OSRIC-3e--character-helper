@@ -1,0 +1,34 @@
+<div>
+    <h2>{{localize "ARSCC.steps.class"}}</h2>
+    {{#if data.needRace}}<p class="acc-note">{{localize "ARSCC.needRace"}}</p>{{else}}
+    <div class="acc-cards acc-cards-2">
+        {{#each data.classes}}
+        <div class="acc-card{{#if selected}} selected{{/if}}{{#unless ok}} disabled{{/unless}}">
+            <button type="button" class="acc-card-main" data-action="pickClass" data-key="{{key}}" {{#unless ok}}disabled{{/unless}}>
+                <strong>{{label}}</strong>
+                <span>{{localize "ARSCC.hd"}} {{hd}} · {{localize "ARSCC.prime"}} {{prime}}{{#if bonusText}} ({{bonusText}}){{/if}} · {{localize "ARSCC.maxLevel"}} {{cap}}</span>
+                <span class="acc-sub">{{localize "ARSCC.minimums"}}: {{min}}</span>
+            </button>
+            {{#each reasons}}<span class="acc-reason">{{this}}</span>{{/each}}
+            {{#each warnings}}<span class="acc-reason warn">{{this}}</span>{{/each}}
+            {{#if uuid}}<button type="button" class="acc-link" data-action="preview" data-uuid="{{uuid}}"><i class="fa-solid fa-book" inert></i> {{localize "ARSCC.readMore"}}</button>{{/if}}
+        </div>
+        {{/each}}
+    </div>
+    {{#if data.combos.length}}
+    <h3>{{localize "ARSCC.multiclass"}} · {{data.raceLabel}}</h3>
+    <div class="acc-chips">
+        {{#each data.combos}}<button type="button" class="acc-chip{{#if selected}} selected{{/if}}" data-action="pickCombo" data-combo="{{value}}" {{#unless ok}}disabled{{/unless}} title="{{why}}">{{label}}</button>{{/each}}
+    </div>
+    {{/if}}
+    {{#if data.strength}}
+    <h3>{{localize "ARSCC.exceptional"}}</h3>
+    <div class="acc-fields">
+        <button type="button" class="acc-primary" data-action="rollPercent" {{#unless data.strength.canRoll}}disabled{{/unless}}><i class="fa-solid fa-dice" inert></i> d100</button>
+        {{#if data.strength.canEdit}}<label><span>18/ (≤ {{data.strength.max}})</span><input type="number" name="strPercent" data-bind="strPercent" data-type="number" min="1" max="{{data.strength.max}}" value="{{data.strength.value}}"></label>
+        {{else}}<b class="acc-score">18/{{data.strength.value}}</b>{{/if}}
+        <span class="acc-fx">{{#each data.strength.effects}}<span>{{this}}</span>{{/each}}</span>
+    </div>
+    {{/if}}
+    {{/if}}
+</div>

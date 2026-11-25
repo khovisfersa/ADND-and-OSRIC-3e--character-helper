@@ -1,0 +1,18 @@
+<div>
+    <h2>{{localize "ARSCC.steps.spells"}} <span class="acc-count">{{data.book.count}} / {{data.book.suggested}}</span></h2>
+    <p class="acc-sub">{{localize "ARSCC.spellChance"}} {{data.book.learnChance}}% · {{localize "ARSCC.spellMax"}} {{data.book.maxPerLevel}}{{#if data.book.requiredText}} · {{localize "ARSCC.spellRequired"}}: {{data.book.requiredText}}{{/if}}{{#if data.book.oppositionText}} · {{localize "ARSCC.opposition"}}: {{data.book.oppositionText}}{{/if}}</p>
+    {{#if data.none}}<p class="acc-note warn">{{localize "ARSCC.noSpells"}}</p>{{else}}
+    <div class="acc-fields">
+        <input type="search" class="acc-grow" name="f-spell" data-filter="spell" value="{{data.filters.spell}}" placeholder="{{localize 'ARSCC.filter'}}" aria-label="{{localize 'ARSCC.filter'}}">
+        <label><select name="f-spellLevel" data-filter="spellLevel" aria-label="{{localize 'ARSCC.spellLevel'}}"><option value="">{{localize "ARSCC.allLevels"}}</option>{{#each data.levels}}<option value="{{n}}" {{#if selected}}selected{{/if}}>{{localize "ARSCC.spellLevel"}} {{n}}</option>{{/each}}</select></label>
+    </div>
+    <ul class="acc-list acc-grid">
+        {{#each data.spells}}
+        <li class="{{#if on}}on{{/if}}{{#if barred}} barred{{/if}}">
+            <button type="button" class="acc-row" data-action="toggleSpell" data-uuid="{{uuid}}" aria-pressed="{{on}}" {{#if locked}}disabled{{/if}}><i class="fa-{{#if on}}solid fa-square-check{{else}}regular fa-square{{/if}}" inert></i><img src="{{img}}" alt=""><span>{{name}}</span><em>{{school}}</em><b>{{level}}</b></button>
+            <button type="button" class="acc-icon" data-action="preview" data-uuid="{{uuid}}" aria-label="{{localize 'ARSCC.readMore'}}"><i class="fa-solid fa-book" inert></i></button>
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+</div>
