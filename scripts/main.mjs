@@ -1,6 +1,7 @@
 export const MODULE_ID = 'ars-character-creator';
 const QUERY = `${MODULE_ID}.create`;
 let app = null;
+const progressApps = new Map();
 
 export const setting = (key) => game.settings.get(MODULE_ID, key);
 
@@ -11,6 +12,8 @@ Hooks.once('init', () => {
     world('lockRuleset', Boolean, false);
     world('allowManual', Boolean, true);
     world('allowIgnoreLimits', Boolean, false);
+    world('playersAwardXp', Boolean, true);
+    world('notifyReady', Boolean, true);
     world('maxRerolls', Number, 0, { range: { min: 0, max: 20, step: 1 } });
     world('maxStartLevel', Number, 10, { range: { min: 1, max: 20, step: 1 } });
     world('postRolls', Boolean, true);
@@ -21,7 +24,7 @@ Hooks.once('init', () => {
 });
 
 Hooks.once('ready', () => {
-    game.modules.get(MODULE_ID).api = { open: openCreator };
+    game.modules.get(MODULE_ID).api = { open: openCreator, progress: openProgression };
 });
 
 async function openCreator() {
@@ -30,6 +33,47 @@ async function openCreator() {
     app ??= new CharacterCreator();
     return app.render({ force: true });
 }
+
+/** Open the progression assistant for a character the user owns. */
+export async function openProgression(actor = game.user.character ?? canvas.tokens?.controlled[0]?.actor) {
+    if (!actor || actor.type !== 'character') return void ui.notifications.warn(game.i18n.localize('ARSCC.progress.noActor'));
+    if (!actor.isOwner) return void ui.notifications.warn(game.i18n.localize('ARSCC.progress.notOwner'));
+    const { ProgressionApp } = await import('./app/progression-app.mjs');
+    if (!progressApps.has(actor.uuid)) progressApps.set(actor.uuid, new ProgressionApp(actor));
+    return progressApps.get(actor.uuid).render({ force: true });
+}
+
+const PROGRESS = { icon: 'fa-solid fa-arrow-trend-up', label: 'ARSCC.progress.open' };
+
+Hooks.on('getHeaderControlsActorSheetV2', (sheet, controls) => {
+    const actor = sheet.actor ?? sheet.document;
+    if (actor?.type !== 'character' || !actor.isOwner || controls.some((c) => c.action === 'arsccProgress')) return;
+    controls.unshift({ ...PROGRESS, action: 'arsccProgress', onClick: () => openProgression(actor) });
+});
+
+Hooks.on('getActorContextOptions', (directory, options) => {
+    const actorOf = (li) => game.actors.get((li.closest?.('[data-entry-id]') ?? li).dataset.entryId);
+    options.push({ ...PROGRESS, visible: (li) => actorOf(li)?.type === 'character' && actorOf(li).isOwner, onClick: (_event, li) => openProgression(actorOf(li)) });
+});
+
+/** Tell the owner when a class earns enough experience for its next level. */
+Hooks.on('updateItem', async (item, changes) => {
+    if (item.type !== 'class' || !foundry.utils.hasProperty(changes, 'system.xp') || item.parent?.documentName !== 'Actor') return;
+    const actor = item.parent;
+    if (actor.type !== 'character' || !actor.isOwner || !setting('notifyReady')) return;
+    if (game.user.isGM && game.users.some((u) => u.active && !u.isGM && actor.testUserPermission(u, 'OWNER'))) return;
+    const P = await import('./core/progression.mjs');
+    const source = actor.toObject();
+    source.system.abilities = Object.fromEntries(Object.entries(actor.system.abilities).map(([k, v]) => [k, { value: v.value, percent: v.percent }]));
+    const snap = P.snapshot(source, P.rulesetOf(source, game.settings.get('ars', 'systemVariant')));
+    const cls = snap.classes.find((c) => c.id === item.id);
+    if (cls && P.classProgress(snap, cls).ready) ui.notifications.info(game.i18n.format('ARSCC.progress.readyNotice', { name: actor.name, cls: item.name, level: P.levelOf(cls) + 1 }));
+});
+
+Hooks.on('deleteActor', (actor) => {
+    progressApps.get(actor.uuid)?.close();
+    progressApps.delete(actor.uuid);
+});
 
 Hooks.on('renderActorDirectory', (_directory, html) => {
     if (!game.user.isGM && !setting('allowPlayers')) return;

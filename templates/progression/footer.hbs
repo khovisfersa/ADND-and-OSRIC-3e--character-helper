@@ -1,0 +1,10 @@
+<footer class="acc-footer">
+    <span class="acc-sub">{{ruleset}}</span>
+    <span class="acc-spacer"></span>
+    {{#if inLevel}}
+    <button type="button" data-action="back"><i class="fa-solid fa-chevron-left" inert></i> {{localize "ARSCC.prev"}}</button>
+    <button type="button" class="acc-primary" data-action="apply" {{#unless canApply}}disabled{{/unless}}>
+        {{#if busy}}<i class="fa-solid fa-spinner fa-spin" inert></i>{{else}}<i class="fa-solid fa-arrow-up" inert></i>{{/if}} {{localize "ARSCC.progress.apply"}}
+    </button>
+    {{/if}}
+</footer>

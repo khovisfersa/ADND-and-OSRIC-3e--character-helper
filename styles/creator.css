@@ -177,3 +177,17 @@ label.acc-card input { position: absolute; top: 8px; right: 8px; }
     .acc-ability .acc-fx { grid-column: 1 / -1; }
     .acc-review div { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Progression assistant */
+.ars-cc.ars-cc-progress .window-content { grid-template: minmax(0, 1fr) auto / minmax(0, 1fr); grid-template-areas: 'body' 'footer'; }
+.ars-cc.ars-cc-progress .acc-body { grid-column: 1; margin-left: 0; }
+.acc-progress-list { display: grid; gap: 10px; }
+.acc-progress-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.acc-bar { height: 8px; border-radius: 4px; background: var(--acc-line); overflow: hidden; }
+.acc-bar i { display: block; height: 100%; background: var(--acc-red); }
+.acc-changes { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0 18px; margin: 0; }
+.acc-changes div { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; border-bottom: 1px dotted var(--acc-line); }
+.ars-cc .acc-changes dt { font-weight: normal; }
+.acc-changes dd { margin: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.acc-changes dd span { color: var(--acc-mute); }
+.acc-changes dd i { font-size: 0.7rem; color: var(--acc-mute); }

@@ -1,0 +1,81 @@
+<div>
+    <h2>{{data.name}} {{data.level}}</h2>
+
+    <h3>{{localize "ARSCC.hp"}} <small>{{data.formula}}</small></h3>
+    <div class="acc-fields">
+        {{#unless data.fixed}}<button type="button" class="acc-primary" data-action="rollHp" {{#unless data.canRoll}}disabled{{/unless}}><i class="fa-solid fa-dice" inert></i> {{localize "ARSCC.roll"}}</button>{{/unless}}
+        {{#if data.canType}}<label><span>{{localize "ARSCC.progress.die"}}</span><input type="number" name="die" data-bind="die" min="0" value="{{data.die}}" {{#if data.fixed}}readonly{{/if}}></label>{{else}}<b class="acc-score">{{data.die}}</b>{{/if}}
+        {{#if data.hpText}}<b>{{data.hpText}}</b>{{/if}}
+    </div>
+
+    {{#if data.changes.length}}
+    <h3>{{localize "ARSCC.progress.changes"}}</h3>
+    <dl class="acc-changes">
+        {{#each data.changes}}<div><dt>{{label}}</dt><dd><span>{{from}}</span> <i class="fa-solid fa-arrow-right" inert></i> <b>{{to}}</b></dd></div>{{/each}}
+    </dl>
+    {{/if}}
+    {{#if data.grants.length}}
+    <h3>{{localize "ARSCC.progress.features"}}</h3>
+    <div class="acc-chips">{{#each data.grants}}<span class="acc-chip">{{this}}</span>{{/each}}</div>
+    {{/if}}
+
+    {{#if data.points}}
+    <h3>{{localize "ARSCC.thiefSkills"}} <span class="acc-count">{{data.points.used}} / {{data.points.available}}</span> <small>{{localize "ARSCC.capPerSkill"}} {{data.points.cap}}</small></h3>
+    <table class="acc-table">
+        <thead><tr><th class="left">{{localize "ARSCC.skill"}}</th><th>{{localize "ARSCC.progress.current"}}</th><th>{{localize "ARSCC.points"}}</th><th>{{localize "ARSCC.total"}}</th></tr></thead>
+        <tbody>{{#each data.points.rows}}<tr><td class="left">{{name}}</td><td>{{total}}%</td><td><input type="number" name="p-{{id}}" data-bind="points.{{id}}" min="0" max="{{../data.points.cap}}" value="{{add}}" aria-label="{{name}}"></td><td><b>{{final}}%</b></td></tr>{{/each}}</tbody>
+    </table>
+    {{/if}}
+
+    <div class="acc-columns">
+        {{#if data.weapon}}
+        <section>
+            <h3>{{localize "ARSCC.weaponProfs"}} <span class="acc-count{{#if data.weapon.over}} over{{/if}}">{{data.weapon.used}} / {{data.weapon.available}}</span></h3>
+            <input type="search" name="f-weapon" data-filter="weapon" value="{{data.filters.weapon}}" placeholder="{{localize 'ARSCC.filter'}}" aria-label="{{localize 'ARSCC.filter'}}">
+            <ul class="acc-list acc-scroll" data-scroll="weapons">
+                {{#each data.weapon.upgrades}}
+                <li class="{{#if on}}on{{/if}}"><button type="button" class="acc-row" data-action="toggleUpgrade" data-id="{{id}}" aria-pressed="{{on}}"><i class="fa-{{#if on}}solid fa-square-check{{else}}regular fa-square{{/if}}" inert></i><span>{{name}}</span><em>{{localize "ARSCC.spec.0"}}</em><b>{{cost}}</b></button></li>
+                {{/each}}
+                {{#each data.weapon.rows}}
+                <li class="{{#if on}}on{{/if}}{{#unless allowed}} barred{{/unless}}"><button type="button" class="acc-row" data-action="toggleWeapon" data-name="{{name}}" aria-pressed="{{on}}"><i class="fa-{{#if on}}solid fa-square-check{{else}}regular fa-square{{/if}}" inert></i><span>{{name}}</span>{{#unless allowed}}<em>{{localize "ARSCC.notAllowed"}}</em>{{/unless}}<b>1</b></button></li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+        {{#if data.nwp}}
+        <section>
+            <h3>{{localize "ARSCC.nwp"}} <span class="acc-count">{{data.nwp.used}} / {{data.nwp.available}}</span></h3>
+            <input type="search" name="f-nwp" data-filter="nwp" value="{{data.filters.nwp}}" placeholder="{{localize 'ARSCC.filter'}}" aria-label="{{localize 'ARSCC.filter'}}">
+            <ul class="acc-list acc-scroll" data-scroll="nwp">
+                {{#each data.nwp.rows}}
+                <li class="{{#if on}}on{{/if}}{{#unless inGroup}} barred{{/unless}}"><button type="button" class="acc-row" data-action="toggleNwp" data-name="{{name}}" aria-pressed="{{on}}"><i class="fa-{{#if on}}solid fa-square-check{{else}}regular fa-square{{/if}}" inert></i><span>{{name}}</span><b>{{cost}}</b></button></li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+    </div>
+
+    {{#if data.spells}}
+    <h3>{{localize "ARSCC.progress.newSpells"}} <span class="acc-count">{{data.spells.used}} / {{data.spells.count}}</span> {{#if data.spells.optional}}<small>{{localize "ARSCC.progress.optional"}}</small>{{/if}}</h3>
+    <p class="acc-sub">{{localize "ARSCC.spellChance"}} {{data.spells.learnChance}}% · {{localize "ARSCC.spellMax"}} {{data.spells.maxPerLevel}}{{#if data.spells.requiredText}} · {{localize "ARSCC.spellRequired"}}: {{data.spells.requiredText}}{{/if}}</p>
+    <input type="search" name="f-spell" data-filter="spell" value="{{data.filters.spell}}" placeholder="{{localize 'ARSCC.filter'}}" aria-label="{{localize 'ARSCC.filter'}}">
+    <ul class="acc-list acc-grid acc-scroll" data-scroll="spells">
+        {{#each data.spells.rows}}
+        <li class="{{#if on}}on{{/if}}{{#if barred}} barred{{/if}}">
+            <button type="button" class="acc-row" data-action="toggleSpell" data-uuid="{{uuid}}" aria-pressed="{{on}}" {{#if barred}}disabled{{/if}}><i class="fa-{{#if on}}solid fa-square-check{{else}}regular fa-square{{/if}}" inert></i><img src="{{img}}" alt=""><span>{{name}}</span><b>{{level}}</b></button>
+            <button type="button" class="acc-icon" data-action="preview" data-uuid="{{uuid}}" aria-label="{{localize 'ARSCC.readMore'}}"><i class="fa-solid fa-book" inert></i></button>
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    {{#if data.training}}
+    <h3>{{localize "ARSCC.progress.training"}}</h3>
+    <div class="acc-fields">
+        {{#if data.training.needRoll}}<button type="button" data-action="rollWeeks"><i class="fa-solid fa-dice" inert></i> {{localize "ARSCC.progress.weeks"}} {{data.training.weeksText}}</button>
+        {{else}}<label><span>{{localize "ARSCC.progress.weeks"}}</span><select name="weeks" data-bind="weeks">{{#each data.training.options}}<option value="{{n}}" {{#if selected}}selected{{/if}}>{{n}}</option>{{/each}}</select></label>{{/if}}
+        <span><b>{{data.training.costText}}</b> {{localize "ARSCC.gp"}} <span class="acc-sub">({{localize "ARSCC.progress.purse"}} {{data.training.purse}})</span></span>
+        <label class="acc-check"><input type="checkbox" name="pay" data-bind="pay" {{#if data.training.pay}}checked{{/if}}><span>{{localize "ARSCC.progress.pay"}}</span></label>
+    </div>
+    {{/if}}
+</div>

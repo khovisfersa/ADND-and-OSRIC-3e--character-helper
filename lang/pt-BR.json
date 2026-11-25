@@ -299,6 +299,14 @@
       "sourcePacks": {
         "name": "Compêndios usados",
         "hint": "Ids separados por vírgula, como osric-compendium.items, em ordem de prioridade. Vazio usa todos os compêndios de itens visíveis."
+      },
+      "playersAwardXp": {
+        "name": "Jogadores podem somar experiência",
+        "hint": "Permite aos donos somar XP na janela de progressão. O mestre sempre pode."
+      },
+      "notifyReady": {
+        "name": "Avisar quando puder subir de nível",
+        "hint": "Avisa o dono quando uma classe junta experiência para avançar."
       }
     },
     "allowShortfall": "Permitir mínimos de classe não atingidos (-10/-15/-20% de XP)",
@@ -309,6 +317,46 @@
       "grizzled": "Grisalho",
       "elder": "Idoso",
       "ancient": "Ancião"
+    },
+    "progress": {
+      "title": "Progressão: {name}",
+      "open": "Progressão",
+      "noActor": "Selecione um personagem primeiro.",
+      "notOwner": "Este personagem não é seu.",
+      "noClass": "Este personagem não tem item de classe.",
+      "levelUp": "Subir de nível",
+      "ready": "Pronto para avançar",
+      "atCap": "Limitado ao nível {level}",
+      "inactive": "Classe inativa",
+      "missing": "faltam",
+      "award": "Conceder experiência",
+      "addXp": "Somar XP",
+      "awarded": "{name}: {xp} XP",
+      "force": "Permitir avançar sem XP suficiente ou além do limite da ancestralidade",
+      "notReady": "Esta classe ainda não tem experiência suficiente.",
+      "die": "Resultado do dado",
+      "hpGain": "+{value} PV",
+      "dualHp": "Sem PV até a nova classe passar a antiga",
+      "changes": "O que melhora",
+      "features": "Novas habilidades",
+      "attacks": "Ataques por rodada",
+      "turn": "Nível de afastar mortos-vivos",
+      "baseAC": "CA base",
+      "slots": "Magias {type}, nível {level}",
+      "arcane": "arcanas",
+      "divine": "divinas",
+      "current": "Atual",
+      "newSpells": "Novas magias no grimório",
+      "optional": "se o mestre permitir",
+      "training": "Treinamento",
+      "weeks": "Semanas",
+      "purse": "tem",
+      "pay": "Pagar com o dinheiro da ficha",
+      "apply": "Confirmar nível",
+      "hpRoll": "{name} {level}: pontos de vida",
+      "reached": "{name} agora é {cls} {level}",
+      "failed": "Não foi possível aplicar o nível: {error}",
+      "readyNotice": "{name} pode avançar para {cls} {level}."
     }
   }
 }

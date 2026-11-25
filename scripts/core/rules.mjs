@@ -144,6 +144,8 @@ export function ageCategories(state) {
  * `strBeforeDecline` is the Strength that decides whether 18/xx may be rolled.
  */
 export function resolveScores(state) {
+    // An existing character already has final scores.
+    if (state.scoresOverride) return { ...state.scoresOverride, strBeforeDecline: state.scoresOverride.scores.str, applied: {} };
     const rs = ruleset(state);
     const race = rs.races[state.race];
     const s = adjustedScores(state);
@@ -239,6 +241,7 @@ export function alignmentsFor(state, classes = state.classes) {
 
 /** Levels this character starts with, capped by race and class. */
 export function startLevels(state) {
+    if (state.levels) return state.levels;
     return Object.fromEntries(state.classes.map((c) => [c, Math.max(1, Math.min(state.startLevel, levelCap(state, c) || 1))]));
 }
 

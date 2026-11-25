@@ -1,0 +1,8 @@
+<section class="acc-body" data-view="{{bodyTemplate}}">
+    {{> (lookup this "bodyTemplate")}}
+    {{#if issues.length}}
+    <ul class="acc-issues">
+        {{#each issues}}<li class="{{level}}"><i class="fa-solid {{#if (eq level 'error')}}fa-circle-exclamation{{else}}fa-circle-info{{/if}}" inert></i> {{text}}</li>{{/each}}
+    </ul>
+    {{/if}}
+</section>

@@ -1,0 +1,28 @@
+<div>
+    <h2>{{actorName}}</h2>
+    {{#if data.none}}<p class="acc-note">{{localize "ARSCC.progress.noClass"}}</p>{{/if}}
+    <div class="acc-progress-list">
+        {{#each data.classes}}
+        <article class="acc-card{{#if ready}} selected{{/if}}">
+            <div class="acc-progress-head">
+                <strong>{{name}} {{level}}</strong>
+                {{#if bonusText}}<span class="acc-sub">{{bonusText}}</span>{{/if}}
+                <span class="acc-spacer"></span>
+                {{#if status}}<span class="acc-tag">{{status}}</span>{{/if}}
+                <button type="button" class="{{#if ready}}acc-primary{{/if}}" data-action="startLevel" data-id="{{id}}" {{#unless canLevel}}disabled{{/unless}}><i class="fa-solid fa-arrow-up" inert></i> {{localize "ARSCC.progress.levelUp"}}</button>
+            </div>
+            <div class="acc-bar" role="progressbar" aria-valuenow="{{percent}}" aria-valuemin="0" aria-valuemax="100" aria-label="{{name}}"><i style="width: {{percent}}%"></i></div>
+            <span class="acc-sub">{{xpText}}{{#if next}} / {{nextText}} XP{{#if missing}} · {{localize "ARSCC.progress.missing"}} {{missingText}}{{/if}}{{else}} XP{{/if}}</span>
+        </article>
+        {{/each}}
+    </div>
+    {{#if data.canAward}}
+    <h3>{{localize "ARSCC.progress.award"}}</h3>
+    <div class="acc-fields">
+        <label><span>XP</span><input type="number" name="award" data-bind="award" value="{{data.award}}" step="1"></label>
+        <button type="button" class="acc-primary" data-action="awardXp" {{#unless data.split.length}}disabled{{/unless}}>{{localize "ARSCC.progress.addXp"}}</button>
+        <span class="acc-fx">{{#each data.split}}<span>{{name}} <b>{{text}}</b></span>{{/each}}</span>
+    </div>
+    {{/if}}
+    {{#if data.canForce}}<label class="acc-check"><input type="checkbox" name="force" data-bind="force" {{#if data.force}}checked{{/if}}><span>{{localize "ARSCC.progress.force"}}</span></label>{{/if}}
+</div>

@@ -1,8 +1,8 @@
 {
   "id": "ars-character-creator",
   "title": "ARS Character Creator Assistant",
-  "description": "Step-by-step character creation for the Advanced Roleplaying System (ARS): OSRIC 3.0, 1st edition and 2nd edition rules. / Assistente de criação de personagens passo a passo para o ARS.",
-  "version": "1.0.0",
+  "description": "Step-by-step character creation and level advancement for the Advanced Roleplaying System (ARS): OSRIC 3.0, 1st edition and 2nd edition rules. / Assistente de criação e progressão de personagens para o ARS.",
+  "version": "1.1.0",
   "compatibility": { "minimum": "14", "verified": "14" },
   "relationships": {
     "systems": [{ "id": "ars", "type": "system", "compatibility": { "minimum": "2026.05.20", "verified": "2026.11.16" } }],

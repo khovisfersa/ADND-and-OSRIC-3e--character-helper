@@ -1,6 +1,6 @@
 # ARS Character Creator Assistant
 
-Assistente de criação de personagens para o [Advanced Roleplaying System (ARS)](https://gitlab.com/foundryprojects/systems/advanced-roleplay-system) no Foundry VTT v14. Cobre OSRIC 3.0, 1ª edição e 2ª edição, em português e inglês.
+Assistente de criação e progressão de personagens para o [Advanced Roleplaying System (ARS)](https://gitlab.com/foundryprojects/systems/advanced-roleplay-system) no Foundry VTT v14. Cobre OSRIC 3.0, 1ª edição e 2ª edição, em português e inglês.
 
 ## Instalar
 
@@ -12,7 +12,7 @@ New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\FoundryVTT\Data\modules\ars
 
 Ative o módulo no mundo ARS. O **OSRIC Compendium** é recomendado: de lá vêm classes, raças, magias e equipamento. Sem ele o assistente usa as tabelas internas (sem magias).
 
-## Usar
+## Criar personagens
 
 Barra lateral **Atores → Criar Personagem**, ou por macro:
 
@@ -26,6 +26,22 @@ A regra escolhida deve ser igual à **variante do sistema** nas configurações 
 
 Jogadores sem permissão para criar atores enviam o personagem ao mestre conectado, que confirma em uma janela.
 
+## Progressão
+
+Três formas de abrir: no menu do cabeçalho da ficha (**Progressão**), com o botão direito no personagem na barra de Atores, ou por macro:
+
+```js
+game.modules.get('ars-character-creator').api.progress(actor);
+```
+
+- **Experiência:** mostra quanto falta para cada classe. O XP concedido é dividido entre as classes ativas, descartando frações, e depois recebe o bônus ou a penalidade de cada uma. O dono é avisado quando puder subir.
+- **Subir de nível:** rola os PV e mostra o que muda (THAC0, salvaguardas, slots, ataques, talentos de ladrão, novas habilidades). Em seguida oferece as escolhas do nível: perícias com armas, perícias comuns, especialização, pontos de ladrão e novas magias. Nada é gravado até confirmar.
+- **Limites:** respeita o nível máximo por ancestralidade e os limites das regras. O mestre pode liberar um avanço sem XP suficiente ou além do limite.
+- **Treinamento (opcional):** OSRIC usa 1d3 semanas e 1.500 po por nível atual; a 1ª edição, o mesmo valor por semana, de 1 a 4. Pode descontar do dinheiro da ficha.
+- **Qualquer classe:** XP, dados de vida, salvaguardas e slots vêm das fileiras do próprio item de classe, então classes caseiras também avançam. Só limites raciais, perícias, talentos e magias novas dependem das regras conhecidas.
+
+Os botões de nível da própria ficha do ARS continuam funcionando, mas não aplicam as regras acima. O assistente não desce de nível nem inicia troca de classe (dual-class); para quem já trocou, ele não concede PV até a classe nova passar a antiga.
+
 ## Configurações do mundo
 
 | Opção | Efeito |
@@ -34,6 +50,8 @@ Jogadores sem permissão para criar atores enviam o personagem ao mestre conecta
 | Travar regras na variante do mundo | Só permite a regra igual à do mundo |
 | Jogadores podem digitar valores | Atributos, força 18/xx e ouro digitados |
 | Jogadores podem ignorar restrições | Mestres sempre podem |
+| Jogadores podem somar experiência | Donos somam XP na janela de progressão |
+| Avisar quando puder subir de nível | Avisa o dono ao juntar XP suficiente |
 | Limite de rolagens de atributos | 0 = livre; outro valor limita também PV, ouro e 18/xx |
 | Maior nível inicial | 1 a 20 |
 | Enviar rolagens ao chat | Mostra as rolagens |
@@ -82,7 +100,7 @@ Os dados ficam em `scripts/data/`.
 ## Testes
 
 ```powershell
-$env:ARS_SRC = "C:\caminho\advanced-roleplay-system\src"; node --test tests/rules.test.mjs
+$env:ARS_SRC = "C:\caminho\advanced-roleplay-system\src"; node --test tests/rules.test.mjs tests/progression.test.mjs
 ```
 
-Os testes montam todas as combinações válidas de raça e classe e validam cada item nos modelos de dados do ARS. `OSRIC_DUMP` (opcional) aponta para um JSON do pacote `osric-compendium.items`.
+Os testes montam todas as combinações válidas de raça e classe e validam cada item nos modelos de dados do ARS. Também sobem personagens até o 10º nível e exigem o mesmo resultado de criá-los direto naquele nível. `OSRIC_DUMP` (opcional) aponta para um JSON do pacote `osric-compendium.items`.

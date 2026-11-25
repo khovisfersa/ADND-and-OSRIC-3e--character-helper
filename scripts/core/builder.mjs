@@ -58,17 +58,22 @@ export async function buildActor(state, { content, tables, randomID }) {
 
     /** Resolve and add what a class or race grants at the starting level. */
     const addGrants = async (source, level, exclude) => {
+        const unwanted = (name) => !!name && (exclude?.test(name) || race.exclude?.test(name));
+        source.system.itemList = (source.system.itemList ?? []).filter((s) => !unwanted(s.name));
+        const dropped = new Set();
         for (const sub of source.system.itemList ?? []) {
             if ((parseInt(sub.level) || 0) > level) continue;
             const id = sub.id || sub.uuid?.split('.').pop();
             if (!id || ids.has(id)) continue;
-            if (exclude?.test(sub.name ?? '')) continue;
             const data = await content.loadById(id, sub.uuid);
             if (!data) {
                 if (sub.name) warnings.push({ key: 'missingGrant', value: sub.name });
                 continue;
             }
-            if (exclude?.test(data.name) || race.exclude?.test(data.name)) continue;
+            if (unwanted(data.name)) {
+                dropped.add(sub);
+                continue;
+            }
             if (data.type === 'skill' && race.targets?.[data.name]) data.system.features.target = race.targets[data.name];
             const cost = parseInt(sub.cost) || 0;
             if (data.type === 'skill') {
@@ -80,6 +85,7 @@ export async function buildActor(state, { content, tables, randomID }) {
             data.system.sourceUuid = sub.uuid ?? '';
             await addNested(data);
         }
+        if (dropped.size) source.system.itemList = source.system.itemList.filter((s) => !dropped.has(s));
     };
 
     /** Add an item and, when it lists contents, its contents too. */

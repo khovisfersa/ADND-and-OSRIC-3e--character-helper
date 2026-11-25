@@ -299,6 +299,14 @@
       "sourcePacks": {
         "name": "Compendiums to use",
         "hint": "Comma-separated ids such as osric-compendium.items, in order of priority. Empty uses every visible Item compendium."
+      },
+      "playersAwardXp": {
+        "name": "Players can add experience",
+        "hint": "Let owners add XP in the progression window. GMs always can."
+      },
+      "notifyReady": {
+        "name": "Notify when a level is ready",
+        "hint": "Tell the owner when a class earns enough experience to advance."
       }
     },
     "allowShortfall": "Allow missed class minimums (-10/-15/-20% XP)",
@@ -309,6 +317,46 @@
       "grizzled": "Grizzled",
       "elder": "Elder",
       "ancient": "Ancient"
+    },
+    "progress": {
+      "title": "Progression: {name}",
+      "open": "Progression",
+      "noActor": "Select a character first.",
+      "notOwner": "You do not own this character.",
+      "noClass": "This character has no class item.",
+      "levelUp": "Level up",
+      "ready": "Ready to advance",
+      "atCap": "Limited to level {level}",
+      "inactive": "Inactive class",
+      "missing": "missing",
+      "award": "Award experience",
+      "addXp": "Add XP",
+      "awarded": "{name}: {xp} XP",
+      "force": "Allow advancing without enough XP or past the ancestry limit",
+      "notReady": "This class does not have enough experience yet.",
+      "die": "Die result",
+      "hpGain": "+{value} HP",
+      "dualHp": "No HP until the new class passes the old one",
+      "changes": "What improves",
+      "features": "New features",
+      "attacks": "Attacks per round",
+      "turn": "Turn undead level",
+      "baseAC": "Base AC",
+      "slots": "{type} spells, level {level}",
+      "arcane": "Arcane",
+      "divine": "Divine",
+      "current": "Current",
+      "newSpells": "New spells in the book",
+      "optional": "if the GM allows",
+      "training": "Training",
+      "weeks": "Weeks",
+      "purse": "has",
+      "pay": "Pay from the purse",
+      "apply": "Confirm level",
+      "hpRoll": "{name} {level}: hit points",
+      "reached": "{name} is now {cls} {level}",
+      "failed": "The level could not be applied: {error}",
+      "readyNotice": "{name} can advance to {cls} {level}."
     }
   }
 }
